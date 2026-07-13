@@ -1,100 +1,66 @@
-
 # Credit Card Fraud Detection Using Machine Learning & Flask
 
-## 📌 Project Overview
-This project detects fraudulent credit card transactions using Machine Learning.  
-A trained classification model predicts whether a transaction is **Fraud** or **Genuine**.  
+## Project Overview
 
-It includes:
-- Machine Learning model (trained on Kaggle dataset)
-- Flask Web App interface
-- Secure login page
-- Model training page
-- Model testing page
-- Transaction analysis and results page
+This project detects fraudulent credit card transactions using Machine Learning.
 
----
+A trained classification model predicts whether a transaction is:
 
-## 📂 Project Folder Structure
-```
-credit-card-fraud-detection/
-│── app.py                # Flask web application
-│── train_model.py        # Machine learning model training script
-│── requirements.txt      # Libraries needed
-│── README.md             # Project documentation
-│
-├── data/
-│   └── creditcard.csv    # Kaggle fraud dataset
-│
-├── models/
-│   ├── model.joblib
-│   ├── scaler.joblib
-│   └── metrics.joblib
-│
-├── templates/            # HTML files
-└── static/               # CSS files
-```
+- Fraudulent
+- Genuine
+
+The project includes a Flask web application for user interaction and prediction.
 
 ---
 
-## ⚙️ Tools & Technologies
-| Category | Tools |
-|--------|-----------|
-Language | Python  
-Web Framework | Flask  
-ML Libraries | Scikit-Learn, Pandas, NumPy  
-Frontend | HTML + CSS  
-Dataset | Credit Card Fraud Dataset (Kaggle)
+## Features
+
+- Machine Learning based fraud detection
+- Flask Web Application
+- User Login System
+- Transaction Prediction
+- Model Training
+- Model Testing
+- Fraud/Genuine Result Analysis
 
 ---
 
-## 📊 Dataset Info
-The dataset contains real credit card transaction records.  
-Fraud cases are very rare (highly imbalanced dataset).
+## Technologies Used
 
-Source: Kaggle — Credit Card Fraud Detection Dataset
+### Programming Language
+- Python
 
----
+### Machine Learning
+- Scikit-learn
+- Pandas
+- NumPy
 
-## 🚀 How to Run the Project
+### Web Development
+- Flask
+- HTML
+- CSS
+- Bootstrap
 
-### **Step-1: Install Dependencies**
-```
-pip install -r requirements.txt
-```
-
-### **Step-2: Train Model**
-```
-python train_model.py
-```
-
-### **Step-3: Run Flask App**
-```
-python app.py
-```
-
-### **Step-4: Open in Browser**
-```
-http://127.0.0.1:5000/
-```
+### Tools
+- VS Code
+- Git & GitHub
 
 ---
 
-## 🔥 Features
-✅ User Login Authentication  
-✅ Train Model Button  
-✅ Predict Fraud Transactions  
-✅ Upload/Test CSV file  
-✅ Shows Prediction Result  
-✅ Simple web UI  
+## Machine Learning Models Used
+
+- Random Forest Classifier
+- Decision Tree Classifier
+- Support Vector Machine (SVM)
 
 ---
 
-## 🧠 Project Outcome
-This project shows how machine learning can be used to detect fraud transactions in banking and cybersecurity systems.
+## Dataset
+
+The dataset used is the Credit Card Fraud Detection dataset.
+
+Due to GitHub file size limitations, the dataset is not included in this repository.
 
 ---
 
-
-
-
+## Project Structure
