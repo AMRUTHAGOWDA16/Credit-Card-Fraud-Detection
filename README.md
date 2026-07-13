@@ -1,29 +1,23 @@
-# Credit Card Fraud Detection Using Machine Learning & Flask
+# 💳 Credit Card Fraud Detection Using Machine Learning & Flask
 
 ## 📌 Project Overview
 
-This project detects fraudulent credit card transactions using Machine Learning techniques.
+This project detects fraudulent credit card transactions using Machine Learning techniques. It analyzes transaction details and predicts whether a transaction is **Genuine** or **Fraudulent** using a trained classification model.
 
-A trained classification model analyzes transaction details and predicts whether a transaction is:
-
-- ✅ Genuine Transaction
-- ⚠️ Fraudulent Transaction
-
-The trained Machine Learning model is integrated with a Flask web application to provide an interactive and user-friendly interface for fraud detection.
+The project is integrated with a Flask web application that provides a simple and user-friendly interface for prediction.
 
 ---
 
 ## 🚀 Features
 
-- Machine Learning based fraud detection
+- Credit Card Fraud Detection using Machine Learning
 - Flask Web Application
-- User Login System
+- Secure Login Page
 - Transaction Prediction
 - Model Training Module
 - Model Testing Module
-- Fraud/Genuine Transaction Analysis
-- Interactive user interface
-- Classification-based prediction system
+- Fraud/Genuine Result Analysis
+- Simple and Interactive User Interface
 
 ---
 
@@ -32,7 +26,7 @@ The trained Machine Learning model is integrated with a Flask web application to
 ### Programming Language
 - Python
 
-### Machine Learning Libraries
+### Machine Learning
 - Scikit-learn
 - Pandas
 - NumPy
@@ -47,32 +41,130 @@ The trained Machine Learning model is integrated with a Flask web application to
 ### Database
 - SQLite
 
-### Development Tools
+### Tools
 - VS Code
-- Git & GitHub
+- Git
+- GitHub
 
 ---
 
-## 🤖 Machine Learning Models Used
+## 🤖 Machine Learning Models
 
-The following classification algorithms are implemented:
+The following machine learning algorithms were used and compared:
 
 - Random Forest Classifier
 - Decision Tree Classifier
 - Support Vector Machine (SVM)
 
-Among these models, the best performing model is selected for final prediction.
+The best-performing model is used for fraud prediction.
 
 ---
 
 ## 📂 Dataset
 
-The project uses the **Credit Card Fraud Detection Dataset**.
+This project uses the **Credit Card Fraud Detection Dataset**.
 
-The dataset contains transaction records with various features used to identify fraudulent activities.
-
-Due to GitHub file size limitations, the dataset is not uploaded in this repository.
+> **Note:** The dataset is not included in this repository because it exceeds GitHub's file size limit.
 
 ---
 
 ## 📁 Project Structure
+
+```text
+Credit-Card-Fraud-Detection/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+├── static/
+├── templates/
+├── model/
+└── screenshots/
+```
+
+---
+
+## ⚙️ Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/AMRUTHAGOWDA16/Credit-Card-Fraud-Detection.git
+```
+
+### Move into the project folder
+
+```bash
+cd Credit-Card-Fraud-Detection
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run the application
+
+```bash
+python app.py
+```
+
+### Open the application
+
+```
+http://127.0.0.1:5000/
+```
+
+---
+
+## 🖥️ Application Screenshots
+
+> Add your screenshots inside the `screenshots` folder and replace the filenames below if needed.
+
+### Login Page
+
+![Login](screenshots/login.png)
+
+### Home Page
+
+![Home](screenshots/home.png)
+
+### Prediction Page
+
+![Prediction](screenshots/prediction.png)
+
+### Result Page
+
+![Result](screenshots/result.png)
+
+---
+
+## 📊 Output
+
+The application predicts whether a credit card transaction is:
+
+- ✅ Genuine Transaction
+- ⚠️ Fraudulent Transaction
+
+---
+
+## 🔮 Future Enhancements
+
+- Real-time transaction monitoring
+- Cloud deployment
+- Improved model accuracy
+- Banking API integration
+- Mobile application support
+
+---
+
+## 👩‍💻 Author
+
+**Amrutha V R Gowda**
+
+Computer Science & Engineering Student
+
+---
+
