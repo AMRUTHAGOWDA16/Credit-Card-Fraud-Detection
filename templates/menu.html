@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Credit Card Fraud Detection</h1>
+            <p class="subtitle">Main Menu</p>
+            <div class="user-info">
+                <span>Logged in as: <strong>{{ session.user }}</strong></span>
+                <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+            </div>
+        </div>
+        
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-icon">📊</div>
+                <h3>Analysis</h3>
+                <p>View dataset statistics and fraud analysis</p>
+                <a href="{{ url_for('analysis') }}" class="btn btn-primary">Open Analysis</a>
+            </div>
+            
+            <div class="menu-card">
+                <div class="menu-icon">🤖</div>
+                <h3>Model Building</h3>
+                <p>Train ML models and compare performance</p>
+                <a href="{{ url_for('model_building') }}" class="btn btn-primary">Build Model</a>
+            </div>
+            
+            <div class="menu-card">
+                <div class="menu-icon">🔍</div>
+                <h3>Model Testing</h3>
+                <p>Test transactions for fraud detection</p>
+                <a href="{{ url_for('model_testing') }}" class="btn btn-primary">Test Model</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Acharya Institute of Technology | VTU Project 2025-26</p>
+        </div>
+    </div>
+</body>
+</html>

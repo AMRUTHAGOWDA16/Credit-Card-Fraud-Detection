@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis - Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Credit Card Fraud Detection</h1>
+            <p class="subtitle">Dataset Analysis</p>
+            <a href="{{ url_for('menu') }}" class="btn-back">← Back to Menu</a>
+        </div>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-error">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        {% if stats %}
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">💳</div>
+                <h3>Total Transactions</h3>
+                <p class="stat-number">{{ stats.total_transactions }}</p>
+            </div>
+            
+            <div class="stat-card fraud">
+                <div class="stat-icon">⚠️</div>
+                <h3>Fraudulent Transactions</h3>
+                <p class="stat-number">{{ stats.fraud_count }}</p>
+                <p class="stat-detail">{{ stats.fraud_percentage }}%</p>
+            </div>
+            
+            <div class="stat-card legit">
+                <div class="stat-icon">✅</div>
+                <h3>Legitimate Transactions</h3>
+                <p class="stat-number">{{ stats.legitimate_count }}</p>
+                <p class="stat-detail">{{ 100 - stats.fraud_percentage }}%</p>
+            </div>
+        </div>
+        
+        <div class="analysis-section">
+            <h2>Transaction Amount Analysis</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h4>Average Fraudulent Amount</h4>
+                    <p class="amount-text fraud-amount">${{ stats.avg_fraud_amount }}</p>
+                </div>
+                <div class="comparison-card">
+                    <h4>Average Legitimate Amount</h4>
+                    <p class="amount-text legit-amount">${{ stats.avg_legit_amount }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <h3>📈 Key Insights</h3>
+            <ul>
+                <li>The dataset is <strong>highly imbalanced</strong> with only {{ stats.fraud_percentage }}% fraudulent transactions</li>
+                <li>This imbalance requires special handling during model training</li>
+                <li>Machine Learning algorithms can help detect patterns that humans might miss</li>
+                <li>Features like transaction amount, frequency, and time are crucial for detection</li>
+            </ul>
+        </div>
+        {% endif %}
+        
+        <div class="footer">
+            <p>Acharya Institute of Technology | VTU Project 2025-26</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Testing - Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Credit Card Fraud Detection</h1>
+            <p class="subtitle">Test Transaction for Fraud</p>
+            <a href="{{ url_for('menu') }}" class="btn-back">← Back to Menu</a>
+        </div>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-error">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        {% if result %}
+        <div class="result-box {% if result.prediction == 'FRAUDULENT' %}fraud-detected{% else %}legit-detected{% endif %}">
+            <h2>🔍 Detection Result</h2>
+            <div class="prediction-result">
+                <h3>Transaction is: <span class="prediction-text">{{ result.prediction }}</span></h3>
+                <div class="probability-bars">
+                    <div class="prob-bar">
+                        <span>Fraud Probability:</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill fraud-bar" style="width: {{ result.fraud_probability }}%">
+                                {{ result.fraud_probability }}%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prob-bar">
+                        <span>Legitimate Probability:</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill legit-bar" style="width: {{ result.legit_probability }}%">
+                                {{ result.legit_probability }}%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="form-container">
+            <h2>Enter Transaction Details</h2>
+            <form method="POST" action="{{ url_for('model_testing') }}">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="transaction_amount">Transaction Amount ($)</label>
+                        <input type="number" step="0.01" id="transaction_amount" 
+                               name="transaction_amount" required 
+                               placeholder="e.g., 150.50" value="150.50">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transaction_freq">Transaction Frequency (per day)</label>
+                        <input type="number" id="transaction_freq" 
+                               name="transaction_freq" required 
+                               placeholder="e.g., 5" value="3">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="prev_trans_hist">Previous Transaction History (count)</label>
+                        <input type="number" id="prev_trans_hist" 
+                               name="prev_trans_hist" required 
+                               placeholder="e.g., 100" value="50">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purchase_amount">Purchase Amount Comparison ($)</label>
+                        <input type="number" step="0.01" id="purchase_amount" 
+                               name="purchase_amount" required 
+                               placeholder="e.g., 120.00" value="120.00">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cvv">CVV Verification (0=No, 1=Yes)</label>
+                        <select id="cvv" name="cvv" required>
+                            <option value="1">Yes - CVV Verified</option>
+                            <option value="0">No - CVV Failed</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="billing_verify">Billing Address Verified (0=No, 1=Yes)</label>
+                        <select id="billing_verify" name="billing_verify" required>
+                            <option value="1">Yes - Address Match</option>
+                            <option value="0">No - Address Mismatch</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="time_since_last">Time Since Last Transaction (hours)</label>
+                        <input type="number" step="0.1" id="time_since_last" 
+                               name="time_since_last" required 
+                               placeholder="e.g., 2.5" value="5.0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="avg_trans_amount">Average Transaction Amount ($)</label>
+                        <input type="number" step="0.01" id="avg_trans_amount" 
+                               name="avg_trans_amount" required 
+                               placeholder="e.g., 85.00" value="100.00">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="failed_attempts">Failed Login Attempts</label>
+                        <input type="number" id="failed_attempts" 
+                               name="failed_attempts" required 
+                               placeholder="e.g., 0" value="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="unusual_pattern">Unusual Purchase Pattern (0=No, 1=Yes)</label>
+                        <select id="unusual_pattern" name="unusual_pattern" required>
+                            <option value="0">No - Normal Pattern</option>
+                            <option value="1">Yes - Unusual Pattern</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large">🔍 Check Transaction</button>
+            </form>
+        </div> 
+        <div class="footer">
+            <p>Acharya Institute of Technology | VTU Project 2025-26</p>
+        </div>
+    </div>
+</body>
+</html>

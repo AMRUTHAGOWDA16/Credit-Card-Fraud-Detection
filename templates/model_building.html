@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Building - Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Credit Card Fraud Detection</h1>
+            <p class="subtitle">Model Building & Training</p>
+            <a href="{{ url_for('menu') }}" class="btn-back">← Back to Menu</a>
+        </div>
+        
+        <div class="info-box">
+            <h3>🤖 Machine Learning Models</h3>
+            <p>This system trains multiple ML algorithms and selects the best performer:</p>
+            <ul>
+                <li><strong>Random Forest:</strong> Ensemble of decision trees</li>
+                <li><strong>Decision Tree:</strong> Tree-based classification</li>
+                <li><strong>SVM (Support Vector Machine):</strong> Finds optimal hyperplane</li>
+            </ul>
+        </div>
+        
+        {% if not models_exist %}
+        <div class="alert alert-warning">
+            <h3>⚠️ Model Not Trained Yet</h3>
+            <p>To train the model, follow these steps:</p>
+            <ol>
+                <li>Make sure <code>creditcard.csv</code> is in the <code>data</code> folder</li>
+                <li>Open a terminal in VS Code</li>
+                <li>Run: <code>python train_model.py</code></li>
+                <li>Wait for training to complete (may take 2-5 minutes)</li>
+                <li>Refresh this page</li>
+            </ol>
+        </div>
+        {% else %}
+        <div class="alert alert-success">
+            <h3>✅ Model Training Complete!</h3>
+            <p>The model has been successfully trained and saved.</p>
+        </div>
+        
+        {% if metrics %}
+        <h2>Model Performance Comparison</h2>
+        <div class="model-grid">
+            {% for model_name, model_metrics in metrics.items() %}
+            <div class="model-card">
+                <h3>{{ model_name }}</h3>
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-label">Accuracy</span>
+                        <span class="metric-value">{{ model_metrics.accuracy }}%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Precision</span>
+                        <span class="metric-value">{{ model_metrics.precision }}%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Recall</span>
+                        <span class="metric-value">{{ model_metrics.recall }}%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">F1-Score</span>
+                        <span class="metric-value">{{ model_metrics.f1_score }}%</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="info-box">
+            <h3>📊 Understanding the Metrics</h3>
+            <ul>
+                <li><strong>Accuracy:</strong> Overall correctness of predictions</li>
+                <li><strong>Precision:</strong> How many predicted frauds are actually frauds</li>
+                <li><strong>Recall:</strong> How many actual frauds were detected</li>
+                <li><strong>F1-Score:</strong> Balance between precision and recall (best overall metric)</li>
+            </ul>
+            <p><strong>The model with the highest F1-Score was selected for fraud detection.</strong></p>
+        </div>
+        {% endif %}
+        {% endif %}
+        
+        <div class="footer">
+            <p>Acharya Institute of Technology | VTU Project 2025-26</p>
+        </div>
+    </div>
+</body>
+</html>
